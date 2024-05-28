@@ -1,6 +1,6 @@
 # XBee Java Library ![Maven Central](https://img.shields.io/maven-central/v/com.digi.xbee/xbee-java-library)
 
-XBEE interface modified to work with JSerialCom in place of RXTX, since RXTX is 
+XBee serial port interface modified to work with JSerialCom in place of RXTX, since RXTX is 
 out of date and doesn't work with many recent Java versions.
 
 This project contains the source code of the XBee Java Library, an easy-to-use 
