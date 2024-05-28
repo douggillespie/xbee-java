@@ -16,6 +16,7 @@
 package com.digi.xbee.api;
 
 import com.digi.xbee.api.connection.IConnectionInterface;
+import com.digi.xbee.api.connection.serial.SerialPortJSC;
 import com.digi.xbee.api.connection.serial.SerialPortParameters;
 import com.digi.xbee.api.connection.serial.SerialPortRxTx;
 
@@ -24,6 +25,7 @@ import com.digi.xbee.api.connection.serial.SerialPortRxTx;
  */
 public class XBee {
 	
+	private static boolean useRXTX = true;
 	/**
 	 * Returns a serial port connection interface for the provided port with 
 	 * the given baud rate.
@@ -40,7 +42,12 @@ public class XBee {
 	 * @see com.digi.xbee.api.connection.IConnectionInterface
 	 */
 	public static IConnectionInterface createConnectiontionInterface(String port, int baudRate) {
-		return new SerialPortRxTx(port, baudRate);
+		if (useRXTX) {
+			return new SerialPortRxTx(port, baudRate);
+		}
+		else {
+			return new SerialPortJSC(port, baudRate);
+		}
 	}
 	
 	/**
@@ -60,6 +67,25 @@ public class XBee {
 	 * @see com.digi.xbee.api.connection.serial.SerialPortParameters
 	 */
 	public static IConnectionInterface createConnectiontionInterface(String port, SerialPortParameters serialPortParameters) {
-		return new SerialPortRxTx(port, serialPortParameters);
+		if (useRXTX) {
+			return new SerialPortRxTx(port, serialPortParameters);
+		}
+		else {
+			return new SerialPortJSC(port, serialPortParameters);
+		}
+	}
+
+	/**
+	 * @return the useRXTX
+	 */
+	public static boolean isUseRXTX() {
+		return useRXTX;
+	}
+
+	/**
+	 * @param useRXTX the useRXTX to set
+	 */
+	public static void setUseRXTX(boolean useRXTX) {
+		XBee.useRXTX = useRXTX;
 	}
 }
