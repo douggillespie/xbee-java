@@ -57,7 +57,8 @@ public class SerialPortJSC extends AbstractSerialPort implements SerialPortDataL
 		serialPort.setNumDataBits(parameters.dataBits);
 		serialPort.setNumStopBits(parameters.stopBits);
 		serialPort.setParity(parameters.parity);
-		serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, receiveTimeout*1000, 0);
+//		serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, receiveTimeout*1000, 0);
+		serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0);
 		connectionOpen = serialPort.openPort();
 		inputStream = serialPort.getInputStream();
 		outputStream = serialPort.getOutputStream();
