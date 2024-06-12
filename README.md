@@ -1,5 +1,8 @@
 # XBee Java Library ![Maven Central](https://img.shields.io/maven-central/v/com.digi.xbee/xbee-java-library)
 
+XBee serial port interface modified to work with JSerialCom in place of RXTX, since RXTX is 
+out of date and doesn't work with many recent Java versions.
+
 This project contains the source code of the XBee Java Library, an easy-to-use 
 API developed in Java that allows you to interact with Digi International's
 [XBee](http://www.digi.com/xbee/) radio frequency (RF) modules. This source has 
